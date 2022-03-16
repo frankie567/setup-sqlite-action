@@ -10,5 +10,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: 'Run action'
+    - name: Run action
       uses: frankie567/setup-sqlite-action@main
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
+    - name: Check SQLite version
+      shell: bash
+      run: |
+        python -c "import sqlite3; print(sqlite3.sqlite_version)"

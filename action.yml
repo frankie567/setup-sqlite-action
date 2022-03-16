@@ -15,10 +15,13 @@ runs:
       run: |
         curl "https://www.sqlite.org/2022/${{ inputs.source_package_name }}.tar.gz" -o ${{ inputs.source_package_name }}.tar.gz
         tar -xvf ${{ inputs.source_package_name }}.tar.gz
-    - name: Build and install SQLite
+    - name: Build SQLite
       working-directory: ${{ inputs.source_package_name }}
       shell: bash
       run: |
         ./configure
         make
-        make install
+    - name: Add to path
+      shell: bash
+      run: |
+        echo "${{ inputs.source_package_name }}" >> $GITHUB_PATH
