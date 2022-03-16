@@ -14,7 +14,7 @@ runs:
       shell: bash
       run: |
         curl "https://www.sqlite.org/2022/${{ inputs.source_package_name }}.tar.gz" -o ${{ inputs.source_package_name }}.tar.gz
-        tar -xvf ${{ inputs.source_package_name }}
+        tar -xvf ${{ inputs.source_package_name }}.tar.gz
     - name: Build and install SQLite
       working-directory: ${{ inputs.source_package_name }}
       shell: bash
