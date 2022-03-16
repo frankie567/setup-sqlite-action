@@ -9,15 +9,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Run action
-      uses: frankie567/setup-sqlite-action@main
-    - name: Check SQLite version
-      shell: bash
-      run: |
-        echo "$PATH"
-        which sqlite3
-        sqlite3 --version
+    # - uses: actions/checkout@v2
+    # - name: Run action
+    #   uses: frankie567/setup-sqlite-action@main
+    # - name: Check SQLite version
+    #   shell: bash
+    #   run: |
+    #     echo "$PATH"
+    #     which sqlite3
+    #     sqlite3 --version
     - name: Set up Python 3.10
       uses: actions/setup-python@v2
       with:
@@ -25,4 +25,5 @@ jobs:
     - name: Check SQLite version in Python
       shell: bash
       run: |
+        pip install pysqlite3-binary
         python -c "import sqlite3; print(sqlite3.sqlite_version)"
