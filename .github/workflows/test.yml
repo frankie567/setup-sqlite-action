@@ -18,3 +18,11 @@ jobs:
         echo "$PATH"
         which sqlite3
         sqlite3 --version
+    - name: Set up Python 3.10
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
+    - name: Check SQLite version in Python
+      shell: bash
+      run: |
+        python -c "import sqlite3; print(sqlite3.sqlite_version)"

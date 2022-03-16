@@ -24,4 +24,4 @@ runs:
     - name: Add to path
       shell: bash
       run: |
-        echo "${{ inputs.source_package_name }}" >> $GITHUB_PATH
+        echo "$(readlink -f ${{ inputs.source_package_name }})" >> $GITHUB_PATH
