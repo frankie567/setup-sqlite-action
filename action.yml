@@ -1,0 +1,24 @@
+name: 'Install SQLite'
+description: 'Install the most recent version of SQLite on the runner.'
+
+inputs:
+  source_package_name:
+    description: 'Name of the source code package'
+    default: sqlite-autoconf-3380100
+
+runs:
+  using: composite
+
+  steps:
+    - name: Download and extract SQLite source code
+      shell: bash
+      run: |
+        curl "https://www.sqlite.org/2022/${{ inputs.source_package_name }}.tar.gz" -o ${{ inputs.source_package_name }}.tar.gz
+        tar -xvf sqlite.tar.gz
+    - name: Build and install SQLite
+      working-directory: ${{ inputs.source_package_name }}
+      shell: bash
+      run: |
+        ./configure
+        make
+        make install
